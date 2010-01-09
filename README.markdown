@@ -29,3 +29,14 @@ More information regarding the api is available here: http://lighthouseapp.com/a
 	getTicket(project_id, ticket_number, callback) 
 	
 	getNewTicket(project_id, callback)
+	
+###Debugging
+If you encounter problems dealing with the json you get back, a helpful debug function to use in coordination with firebug is console.dir
+
+So for instance, you could write:
+
+	$.jBeacon.getNewProject(function(json) {
+		console.dir(json);
+	});
+	
+And then examine the resulting json in the console
