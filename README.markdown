@@ -39,4 +39,11 @@ So for instance, you could write:
 		console.dir(json);
 	});
 	
-And then examine the resulting json in the console
+And then examine the resulting json in the console.
+
+###Reasons for Using jBeacon
+jBeacon provides a simple interface allowing you to write a little less code each time you talk to the Lighthouse API.
+
+Having your app use Ajax to hit the API is faster and provides a better user experience (less page reloads).
+
+Furthermore, using a direct cross-site ajax approach (as is implemented here) as opposed to a server-side intermediary is much faster (cutting page requests in half as a server-side intermediary will have to use something like curl to then access the api from the server).
