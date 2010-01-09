@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>jBeacon Test Page</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.jBeacon.js"></script>
+		
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				
+				$.jBeacon.settings({
+					account: "your_account_name"
+				});
+				
+				//Load our projects onto our page
+				$.jBeacon.listProjects(function(j) {
+					$.each(j.projects, function(i, proj) {
+						$('<p>Project: <strong>' + proj.project.name + '</strong></p><ul id="' + proj.project.id + '"></ul>').appendTo("body");
+						
+						//Load our Tickets onto the page
+						$.jBeacon.listTickets(proj.project.id, function(j) {
+							$.each(j.tickets, function(i, tick) {
+								$('<li>' + tick.ticket.title + '</li>').appendTo("#" + tick.ticket.project_id);
+							})
+						});
+					});
+				});
+			});
+		</script>
+		
+	</head>
+	<body>
+	</body>
+</html>

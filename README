@@ -1,0 +1,3 @@
+jBeacon is a jQuery interface to the Lighthouse API. It is designed to be a lightweight wrapper interface, facilitating simpler front-end communication directly with Lighthouse, but still remaining flexible enough not to commit the developer to any design decisions (specifically markup).
+
+jBeacon's getters (currently only GET is supported via cross-site json(p) calls) accept anonymous callback functions (with the resulting json as their parameter) as arguments.
