@@ -1,20 +1,15 @@
 (function($) {
 	
 	//Private internal function to access api (this is not available outside of our closure)
-	function lighthouseService(beacon, url, callback, options) {
+	function lighthouseService(beacon, url, callback) {
+		var url = "http://" + beacon.settings.account + ".lighthouseapp.com/" + url + "?callback=?";
 		
-		settings = jQuery.extend({
-		     serviceType: "GET"
-		  }, options);
+		if(beacon.settings.token)
+			url += "&_token=" + beacon.settings.token;
 		
-		$.ajax({
-			type: settings.serviceType,
-			url: "http://" + beacon.settings.account + ".lighthouseapp.com/" + url,
-			dataType: "jsonp",
-			success: function(j) {
-				callback.apply(this, $.makeArray(j));
-			}
-		});
+		$.getJSON(url, function(data) {
+			callback.apply(this, $.makeArray(data));
+		})
 	};
 	
 	//The Plugin itself
@@ -22,7 +17,9 @@
 		
 		//Function to set up account specific settings
 		settings : function(options) {
-			this.settings = options;
+			this.settings = jQuery.extend({
+			     token: null
+			  }, options);
 		},
 		
 		//==========================================================
