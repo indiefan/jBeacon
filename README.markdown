@@ -10,19 +10,15 @@ First, include the jBeacon code onto your page (the only requirement is jQuery)
 	
 Next, you need to tell jBeacon your account settings (most likely in your document ready function)
 
-	$(document).ready(function() {
-		$.jBeacon.settings({
-			account: "your_account_name"
-		});
+	$.jBeacon.settings({
+		account: "your_account_name"
 	});
 	
 If you don't specify a token, most browsers will prompt you to authenticate (after which your api calls will work for the browsing session). However, if you'd prefer bypassing authentication by specifying a token, be sure that it is a read only token. Pass the token in to the settings, as follows:
 
-	$(document).ready(function() {
-		$.jBeacon.settings({
-			account: "your_account_name",
-			token: "your_token"
-		});
+	$.jBeacon.settings({
+		account: "your_account_name",
+		token: "your_token"
 	});
 	
 Once you've initialized jBeacon with your account name, you can access the api functions. So for instance, to list all the projects for this account you would write:
